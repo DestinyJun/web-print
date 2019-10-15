@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>js不预览直接打印</title>
+</head>
+<body>
+<button onclick="test()">打印</button>
+</body>
+<script>
+  var str = `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>小票打印</title>
+  <style type="text/css" media="print">
+  body {
+    margin-top: 0;
+    margin-bottom: 20px;
+		margin-left: 3px;
+		margin-right: 3px;
+	}
+  @page {
+		margin: 0;
+	}
+  .page1{
+    width: 100%;
+    height: auto;
+    font-size: 10px;
+  }
+</style>
+</head>
+<body>
+<div class="page1">
+   <div style="border-top: 1px dashed red"></div>
+  <h5>测试服务区2</h5>
+  <p>商家：瓜瓜商店</p>
+  <p>账单号：1575554545</p>
+  <p>排队好：48</p>
+  <div style="border-top: 1px dashed red"></div>
+  <p>
+    <span>重庆小面</span>
+    <span>X2.0</span>
+    <span>30.0</span>
+  </p>
+  <div style="border-top: 1px dashed red"></div>
+  <p>收银人：瓜</p>
+  <p>时间：2019-10-15 15：53：29</p>
+  <p>合计：30.0</p>
+  <div style="border-top: 1px dashed red"></div>
+</div>
+</body>
+</html>
+  `
+  function test() {
+    var windowprint = window.open();
+    if (windowprint) {
+      windowprint.document.open();
+      windowprint.document.write(str);
+      windowprint.document.close();
+      windowprint.print();
+      windowprint.close();
+    }
+  }
+</script>
+</html>
